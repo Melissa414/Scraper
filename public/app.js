@@ -1,3 +1,4 @@
+// Grab the articles as a json
 $.getJSON("/articles", function(data) {
   // For each one
   for (var i = 0; i < data.length; i++) {
@@ -17,7 +18,7 @@ $(document).on("click", "p", function() {
   // Now make an ajax call for the Article
   $.ajax({
     method: "GET",
-    url: "/category/games/" + thisId
+    url: "/articles/" + thisId
   })
     // With that done, add the note information to the page
     .done(function(data) {
