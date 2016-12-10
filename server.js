@@ -28,7 +28,8 @@ app.use(bodyParser.urlencoded({
 app.use(express.static("public"));
 
 // Database configuration with mongoose
-mongoose.connect("mongodb://localhost/week18day3mongoose");
+var dbName = "WebScrapperMongo";
+mongoose.connect('mongodb://localhost/'+ dbName);
 var db = mongoose.connection;
 
 // Show any mongoose errors
@@ -57,7 +58,8 @@ app.get("/scrape", function(req, res) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(html);
     // Now, we grab every h2 within an article tag, and do the following:
-    $("article h2").each(function(i, element) {
+    $("div.entry-header").each(function(i, element) {
+      console.log("im here!!!")
 
       // Save an empty result object
       var result = {};
